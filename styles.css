@@ -1,0 +1,43 @@
+:root {
+  /*variables*/
+  /* --backgroundd: linear-gradient(red, white); */
+  --backgroundd: blue;
+  --backgroundd2: white;
+  --opacityy: 1;
+  --photohttp: url(https://photolemur.com/uploads/blog/unnamed.jpg);
+  --blurr: 0px;
+  --radiuss: 0px;
+  --rotatee: 0deg;
+  --scalee: 1;
+
+  background-image: linear-gradient(var(--backgroundd), var(--backgroundd2));
+  background-color: rgba(#000000 0.2);
+  width: 100vw;
+  height: 100vh;
+}
+.photo-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space;
+}
+.inputs {
+  align-self: flex-start;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  font-weight: 700;
+  font-size: 1.3rem;
+  z-index: 3;
+}
+.my-image {
+  align-self: flex-end;
+  width: 100vw;
+  height: 70vh;
+  background: var(--photohttp);
+  background-size: stretch;
+  opacity: var(--opacityy);
+  filter: blur(var(--blurr));
+  border-radius: var(--radiuss);
+  transform: rotate(var(--rotatee)) scale(var(--scalee));
+  /* transform: rotate(var(--rotatee)) scale((var(--scalee))); */
+}

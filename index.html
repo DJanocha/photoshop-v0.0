@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>edit your photo</title>
+  </head>
+  <body>
+    <div class="photo-editor">
+      <div class="inputs">
+        <div class="input"><label for="backgroundd">background1</label><input type="color" name="backgroundd" id="" /></div>
+        <div class="input"><label for="backgroundd2">background2</label><input type="color" name="backgroundd2" id="" /></div>
+        <div class="input"><label for="opacityy">opacity</label><input type="range" name="opacityy" data-divider="100" id="" /></div>
+        <div class="input"><label for="blurr">blur</label><input type="range" min="0" max="20" name="blurr" data-suffix="px" id="" /></div>
+        <div class="input"><label for="radiuss">radius</label><input type="range" min="0" max="50" name="radiuss" data-suffix="%" id="" /></div>
+        <div class="input"><label for="rotatee">rotate</label><input type="range" min="0" max="360" value="0" name="rotatee" data-suffix="deg" id="" /></div>
+        <div class="input"><label for="scalee">scale</label><input type="range" value="100" min="1" max="500" name="scalee" data-divider="100" id="" /></div>
+        <div class="input"><label for="photohttp">photoURL</label><input type="url" name="photohttp" id="" /></div>
+      </div>
+      <div class="my-image"></div>
+    </div>
+    <script>
+      const inputs = document.querySelectorAll("input")
+      inputs.forEach((inp) => {
+        const changeValue = (e) => {
+          // const modifiedOutput = inp.dataset.divider ? +inp.dataset.divider * 0.01 : inp.dataset.suffix ? e.target.value + inp.dataset.suffix : e.target.value
+          if (inp.dataset.divider) modifiedOutput = e.target.value / 100
+          else if (inp.type === "url") {
+            modifiedOutput = `url(${e.target.value})`
+            // url(https://photolemur.com/uploads/blog/unnamed.jpg);
+          } else if (inp.dataset.suffix) modifiedOutput = e.target.value + inp.dataset.suffix
+          else modifiedOutput = e.target.value
+          console.log(modifiedOutput)
+          document.documentElement.style.setProperty(`--${e.target.name}`, modifiedOutput)
+        }
+        inp.addEventListener("mousemove", changeValue)
+        inp.addEventListener("change", changeValue)
+      })
+      console.log(inputs)
+    </script>
+  </body>
+</html>
